@@ -5,10 +5,6 @@ import {
   Maximize2,
   Pause,
   Play,
-  Dumbbell,
-  Activity,
-  Users,
-  Sparkles,
 } from 'lucide-react';
 import { GALLERY_IMAGES, GalleryImage } from '../data/motrizData.ts';
 import { getNextCarouselIndex } from '../utils/motriz.ts';
@@ -58,24 +54,17 @@ export const StructureSection: React.FC = () => {
   const isCurrentFailed = failedImages[currentImage?.id];
 
   const renderFallbackVisual = (image: GalleryImage, isThumbnail = false) => {
-    const icons = [
-      <Dumbbell className={isThumbnail ? 'w-4 h-4' : 'w-16 h-16'} />,
-      <Activity className={isThumbnail ? 'w-4 h-4' : 'w-16 h-16'} />,
-      <Users className={isThumbnail ? 'w-4 h-4' : 'w-16 h-16'} />,
-      <Sparkles className={isThumbnail ? 'w-4 h-4' : 'w-16 h-16'} />,
-    ];
-    const icon = icons[(image.id - 1) % icons.length];
-
     if (isThumbnail) {
       return (
-        <div className="w-full h-full bg-zinc-900 flex items-center justify-center text-[#f0222a]">
-          {icon}
+        <div className="w-full h-full bg-zinc-900 flex items-center justify-center text-zinc-500">
+          <span className="text-[10px] font-mono">Foto {image.id}</span>
         </div>
       );
     }
 
     return (
-        </div>
+      <div className="w-full h-full min-h-[420px] bg-zinc-950 border border-zinc-900 flex items-center justify-center rounded-2xl">
+        <span className="text-zinc-500 text-sm font-medium">Carregando imagem...</span>
       </div>
     );
   };
